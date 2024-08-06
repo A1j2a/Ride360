@@ -2,6 +2,8 @@ import {Alert, Dimensions, Platform, Share} from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 // import {showMessage} from 'react-native-flash-message';
 import {colors} from '../assets/colors/colors';
+import Toast from 'react-native-toast-message';
+import { showMessage } from 'react-native-flash-message';
 // import Toast from 'react-native-toast-message';
 
 export const screenSize = {
@@ -200,36 +202,76 @@ export const asyncStorageKey = {
   favorites: 'favorites',
 };
 
-// export function showAlert(message: any) {
-//   showMessage({
-//     message: message,
-//     animated: true,
-//     type: 'warning',
-//     duration: 2000,
-//     titleStyle: {
-//       color: colors.white,
-//       fontSize: 16,
-//       fontFamily: fontFamily.Italic,
-//     },
-//     icon: 'warning',
-//     style: {
-//       paddingTop: 20,
-//     },
-//   });
-// }
+export function showAlert(message: any) {
+  showMessage({
+    message: message,
+    animated: true,
+    type: 'warning',
+    duration: 2000,
+    titleStyle: {
+      color: colors.white,
+      fontSize: 16,
+      fontFamily: fontFamily.Italic,
+    },
+    icon: 'warning',
+    style: {
+      paddingTop: 20,
+    },
+  });
+}
 
-// export const addToFavoritesSuccessMessage = (title: any) => {
-//   Toast.hide();
-//   setTimeout(() => {
-//     Toast.show({
-//       type: 'success',
-//       position: 'top',
-//       text1: 'Success!',
-//       text2: title,
-//       visibilityTime: 2000,
-//       autoHide: true,
-//       // bottomOffset: 40,
-//       text2Style: {fontSize: 10},
-//     });
-//   }, 100);
-// };
+export const showMessages = (title: any) => {
+  Toast.hide();
+  setTimeout(() => {
+    Toast.show({
+      type: 'success',
+      position: 'top',
+      text1: title,
+      text2: title,
+      visibilityTime: 2000,
+      autoHide: true,
+      // bottomOffset: 40,
+      text2Style: {fontSize: 10},
+    });
+  }, 100);
+};
+
+export function showError(message: any) {
+  showMessage({
+    message: message,
+    type: "danger",
+    duration: 2000,
+    titleStyle: {
+      color: colors.white,
+      fontSize: 14,
+      fontFamily: fontFamily.Bold,
+    },
+    icon: "info",
+    style: {
+      paddingTop: 20,
+    },
+  });
+}
+
+export function showSuccess(message: any) {
+  showMessage({
+    message: message,
+    type: "success",
+    duration: 2000,
+    titleStyle: {
+      color: colors.white,
+      fontSize: 16,
+      fontFamily: fontFamily.Bold,
+    },
+    icon: "success",
+    style: {
+      paddingTop: 20,
+    },
+  });
+}
+export const Password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+// export const Email=/^[a-zA-Z0-9]+[@][a-z]+\.[a-z]\.*[a-z]{2,3}$/
+
+export const Email =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -4,5 +4,6 @@ export const colors = {
   blue: '#5C7AFF',
   grey: '#7E879F',
   gobalColour:"#CC5501",
-  globleSecond:"#F5EAE2"
+  globleSecond:"#F5EAE2",
+  blackApp:"#4F2C12"
 };

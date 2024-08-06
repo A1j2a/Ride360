@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -12,7 +13,7 @@ import {
 import { colors } from "../assets/colors/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { fontFamily, fontSize, getHeight, getWidth } from "../global/GConstant";
-import { images } from "../assets/Images";
+import { images } from "../assets/images";
 import { screens } from "../screens/index";
 
 const BottomTabNavigator = (props: any) => {
@@ -21,14 +22,19 @@ const BottomTabNavigator = (props: any) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: "transparent" }}>
+        <StatusBar backgroundColor={colors.gobalColour}/>
         <Tab.Navigator
           initialRouteName={props.initialRouteName}
           screenOptions={{
             tabBarStyle: {
               height: getHeight(84),
               justifyContent: "center",
-              borderTopWidth: 1,
+              borderTopWidth: 0,
+              marginHorizontal:getWidth(16),
+              position:"absolute",
               paddingTop: Platform.OS == "ios" ? null : getHeight(10),
+              borderRadius:50,
+              bottom:10
               // paddingBottom:Platform.OS == 'ios' ? getHeight(10):getHeight(10),
               //
             },
@@ -46,18 +52,19 @@ const BottomTabNavigator = (props: any) => {
                 <Text
                   style={[
                     style.lblTitle,
-                    // { color: focused ? colors.globalMainColor : "gray" },
+                    { color: focused ? colors.gobalColour : "gray" },
                   ]}
                 >
                   {"Home"}
                 </Text>
               ),
-            //   tabBarIcon: ({ color, size, focused }: any) => (
-            //     <Image
-            //       style={style.imageStyle}
-            //       source={focused ? images.Home : images.HomeUnFocus}
-            //     />
-            //   ),
+              tabBarIcon: ({ color, size, focused }: any) => (
+                <Image
+                tintColor={focused ? colors.gobalColour:"gray"}
+                style={style.imageStyle}
+                source={images.home}
+              />
+              ),
               headerShown: false,
             }}
           />
@@ -69,19 +76,19 @@ const BottomTabNavigator = (props: any) => {
                 <Text
                   style={[
                     style.lblTitle,
-                    // { color: focused ? colors.globalMainColor : "gray" },
+                    { color: focused ? colors.gobalColour : "gray" },
                   ]}
                 >
-                  {"Account"}
+                  {"Rides"}
                 </Text>
               ),
-            //   tabBarIcon: ({ color, size, focused }: any) => (
-            //     <Image
-            //       tintColor={focused && colors.globalMainColor}
-            //       style={style.imageStyle}
-            //       source={images.Person}
-            //     />
-            //   ),
+              tabBarIcon: ({ color, size, focused }: any) => (
+                <Image
+                  tintColor={focused && colors.gobalColour}
+                  style={[style.imageStyle ,{width:getWidth(28)}]}
+                  source={images.Rides}
+                />
+              ),
               headerShown: false,
             }}
           />
@@ -93,19 +100,19 @@ const BottomTabNavigator = (props: any) => {
                 <Text
                   style={[
                     style.lblTitle,
-                    // { color: focused ? colors.globalMainColor : "gray" },
+                    { color: focused ? colors.gobalColour : "gray" },
                   ]}
                 >
-                  {"Device Details"}
+                  {"Profile"}
                 </Text>
               ),
-            //   tabBarIcon: ({ color, size, focused }: any) => (
-            //     <Image
-            //       tintColor={focused && colors.globalMainColor}
-            //       style={style.imageStyle}
-            //       source={images.ListDetailView}
-            //     />
-            //   ),
+              tabBarIcon: ({ color, size, focused }: any) => (
+                <Image
+                tintColor={focused ? colors.gobalColour:"gray"}
+                style={style.imageStyle}
+                source={images.user}
+              />
+              ),
               headerShown: false,
             }}
           />
@@ -120,14 +127,15 @@ export default BottomTabNavigator;
 
 const style = StyleSheet.create({
     lblTitle: {
-        fontSize: fontSize.size12,
+        fontSize: fontSize.size14,
         paddingBottom: Platform.OS == "ios" ? null : getHeight(20),
         textAlign: "center",
         fontFamily: fontFamily.Medium,
         // marginBottom:getHeight(-3)
       },
       imageStyle: {
-        height: getHeight(20),
-        aspectRatio: 1,
+        height: getHeight(24),
+        width:getWidth(25)
+        // aspectRatio: 1,
       },
 })

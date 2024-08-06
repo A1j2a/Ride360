@@ -11,6 +11,7 @@ export const images = {
   Splash: require('./Ride/Splash.png'),
   user: require('./Ride/user.png'),
   Ride360Logo: require('./Ride/Ride360Logo.png'),
+  LocationOutline: require('./Ride/LocationOutline.png'),
 };
 
  

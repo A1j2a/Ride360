@@ -5,7 +5,7 @@ import { styles } from './style'
 const Rides = () => {
   return (
     <View style={styles.container}>
-      <Text>Rides</Text>
+      <Text style={styles.lblTitle}>Rides</Text>
     </View>
   )
 }
